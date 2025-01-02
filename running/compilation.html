@@ -16,8 +16,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -205,9 +205,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -373,33 +378,52 @@ mkdir<span class="w"> </span>build
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>
 </pre></div>
 </div>
-<p>After successfull compilation, the executable <code class="docutils literal notranslate"><span class="pre">dales4.4</span></code> (&#64;team: number to change) is located in the subdirectory <code class="docutils literal notranslate"><span class="pre">src/</span></code>. Compilation of the code may be sped up using the <code class="docutils literal notranslate"><span class="pre">-j</span> <span class="pre">&lt;nprocs&gt;</span></code> specifier, with <code class="docutils literal notranslate"><span class="pre">nprocs</span></code> being the amount of parallel processes.</p>
+<p>After successfull compilation, the executable <code class="docutils literal notranslate"><span class="pre">dales</span></code> is located in the subdirectory <code class="docutils literal notranslate"><span class="pre">bin/</span></code>. Compilation of the code may be sped up using the <code class="docutils literal notranslate"><span class="pre">-j</span> <span class="pre">&lt;nprocs&gt;</span></code> specifier, with <code class="docutils literal notranslate"><span class="pre">nprocs</span></code> being the amount of parallel processes.</p>
 </section>
 <section id="compilation-options">
 <h2>Compilation options<a class="headerlink" href="#compilation-options" title="Link to this heading">#</a></h2>
-<p>It is possible to specify optional features at the compilation stage of the model. These optional features can be activated by adding them as specifyers to the cmake command, for example,</p>
+<p>It is possible to specify optional features at the compilation stage of the model. These optional features can be activated by adding them as specifyers to the cmake command. CMake options are specified as <code class="docutils literal notranslate"><span class="pre">-D&lt;option&gt;=&lt;value&gt;</span></code>. For example:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>../dales<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Debug
 </pre></div>
 </div>
-<p>will produce a debug build. The debug build is much slower than the release build but contains more error checks. A list of other compilation options is shown below</p>
-<ul>
-<li><p>Choose between single and double precision for the main prognostic fields and for the Poisson solver (from v4.4, default <code class="docutils literal notranslate"><span class="pre">64</span></code>)</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>-DFIELD_PRECISION<span class="o">=</span><span class="m">32</span>
-</pre></div>
+<p>will produce a debug build. The debug build is much slower than the release build but contains more error checks. A list of commonly used options is given below.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Allowed values</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-DENABLE_FFTW</span></code></p></td>
+<td><p>Build with FFTW</p></td>
+<td><p>On/Off</p></td>
+<td><p>On</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-DENABLE_HYPRE</span></code></p></td>
+<td><p>Build with HYPRE</p></td>
+<td><p>On/Off</p></td>
+<td><p>Off</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-DENABLE_FP32_FIELDS</span></code></p></td>
+<td><p>Use single precision floating-point numbers for prognostic fields (momentum, temperature, et cetera)</p></td>
+<td><p>On/Off</p></td>
+<td><p>Off</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-DENABLE_FP32_POIS</span></code></p></td>
+<td><p>Use single precision floating-point numbers for the Poisson solver</p></td>
+<td><p>On/Off</p></td>
+<td><p>Off</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-DENABLE_ACC</span></code></p></td>
+<td><p>Build with GPU support through OpenACC</p></td>
+<td><p>On/Off</p></td>
+<td><p>Off</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>-DPOIS_PRECISION<span class="o">=</span><span class="m">32</span>
-</pre></div>
-</div>
-</li>
-<li><p>Optional alternative Poisson solvers (since v4.3, default <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>-DUSE_FFTW<span class="o">=</span>True
-</pre></div>
-</div>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>-DUSE_HYPRE<span class="o">=</span>True
-</pre></div>
-</div>
-</li>
-</ul>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>To use HYPRE or FFTW, the library needs to both be enabled at compilation and selected at runtime by setting the &amp;SOLVER section of the namoptions input file. <code class="docutils literal notranslate"><span class="pre">FIX</span> <span class="pre">LINK:</span> <span class="pre">See</span> <span class="pre">Alternative</span> <span class="pre">Poisson</span> <span class="pre">solvers</span></code>.</p>
@@ -575,8 +599,8 @@ By The DALES team
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
