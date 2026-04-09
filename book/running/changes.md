@@ -51,6 +51,13 @@ timeav = 600    ! Averaging interval
 /
 ```
 
+### Thermodynamics
+
+* The number of subroutines to perform the saturation adjustment has been reduced to just one.
+* The options `lqlnr`, `lfast_thermo` have been removed.
+* The options `lnoclouds` have been moved from `&dynamics` to `&thermodynamics`
+* The options `chi_half`, `lconstexner` and `lbaseexner` have been moved from `&physics` to `&thermodynamics`.
+
 ## Other major changes
 
 * GPU support with OpenACC (see section [](sec:GPU))
